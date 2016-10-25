@@ -1,0 +1,117 @@
+﻿@model ComicBookStore.Controllers.Song
+@{
+ViewBag.Title = "Home";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="homepage">
+    <h1>Welcome to the ComicBook Online Shop </h1>
+    <h3>Find the best comics and the best comic stores in the world</h3>
+    <article>
+        <section>
+            <h4>What is a comic book ? </h4>
+            <div class="comicDescription">
+                Comics is a medium used to express ideas by images, often combined with text or other visual information. Comics frequently takes the form of juxtaposed sequences of panels of images. Often textual devices such as speech balloons, captions, and onomatopoeia indicate dialogue, narration, sound effects, or other information. Size and arrangement of panels contribute to narrative pacing. Cartooning and similar forms of illustration are the most common image-making means in comics; fumetti is a form which uses photographic images. Common forms of comics include comic strips, editorial and gag cartoons, and comic books. Since the late 20th century, bound volumes such as graphic novels, comic albums, and tankōbon have become increasingly common, and online webcomics have proliferated in the 21st century.
+            </div>
+        </section>
+    </article>
+    <section id="homeMain">
+
+        <article class="brakingNews">
+            <h3>Braking news in comics</h3>
+            <div class="movingTextContainer">
+                <h5>Doctor strange trailer releced, Wolverine goes hard-R – and re-enacts a scene from comic books, SUPERMAN Takes On BATMAN's Foes In SUPER POWERS #1, Marvel & Panini will launch a series of Foreign language translations of some of its top titles.</h5>
+            </div>
+            <section>
+                <header>Doctor Strange - Official Trailer (2016)</header>
+                <content>
+                    <video controls preload="none"  poster="~/Videos/DRS.jpg" >
+                        <source src="~/Videos/DRS.mp4" type="video/mp4"/>
+                        https://www.youtube.com/watch?v=wwcSki7r9cQ
+                    </video>
+                </content>
+            </section>
+        </article>
+
+    </section>
+    <section class="siteStatistics">
+        <h3>Site Statistics</h3>
+
+        <svg width="960" height="500"></svg>
+
+
+
+
+    </section>
+   <!--  <aside>
+        <h4>iTunes comics song of the moment:</h4>
+        <h5>@Html.DisplayFor(model => model.Name)</h5>
+        <h5>@Html.DisplayFor(model => model.ArtistsName)</h5>
+        <h5>@Html.DisplayFor(model => model.AlbumName)</h5>
+    </aside> -->
+</div>
+<style>
+
+    .bar {
+      fill: steelblue;
+  }
+
+  .bar:hover {
+      fill: brown;
+  }
+
+  .axis--x path {
+      display: none;
+  }
+
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+    console.log("yolo");
+    var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+    var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height, 0]);
+
+    var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.tsv("/Content/data.tsv", function(d) {
+      d.frequency = +d.frequency;
+      return d;
+  }, function(error, data) {
+      if (error) throw error;
+
+      x.domain(data.map(function(d) { return d.letter; }));
+      y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+      g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+      g.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y).ticks(10, "%"))
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Frequency");
+
+      g.selectAll(".bar")
+      .data(data)
+      .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height - y(d.frequency); });
+  });
+
+
+  </script>
