@@ -5,6 +5,7 @@ Layout = "~/Views/Shared/_Layout.cshtml";
 
 <div class="homepage">
     <h1>Welcome to the ComicBook Online Shop </h1>
+    <canvas id="full-canvas" style="background-color: #333;width:100%;height:75px;"></canvas>
     <h3>Find the best comics and the best comic stores in the world</h3>
     <article>
         <section>
@@ -36,7 +37,9 @@ Layout = "~/Views/Shared/_Layout.cshtml";
     <section class="siteStatistics">
         <h3>Site Statistics</h3>
 
+        <h3>Percent of Comics Accroding to Genre</h3>
         <svg id="firstGraph" width="960" height="500"></svg>
+        <h3>Percent of All Comics Reviews</h3>
         <svg id="secondGraph" width="960" height="500"></svg>
 
     </section>
@@ -56,6 +59,10 @@ Layout = "~/Views/Shared/_Layout.cshtml";
   }
 
 </style>
+
+
+@* Graphs *@
+
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
     console.log("yolo");
@@ -150,7 +157,42 @@ height = +secondGraph.attr("height") - margin.top - margin.bottom;
         .attr("height", function (d) { return height - y(d.frequency); });
     });
 
-
-
-
   </script>
+
+@* canvas *@
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  var toggle = false;
+  var randomC = setInterval(function() {
+    drawSquares()
+  }, 100);
+
+  $('canvas').click(function() {
+    toggle = !toggle;
+    if (toggle) {
+      clearInterval(randomC);
+    } else {
+      randomC = setInterval(drawSquares, 100);
+    }
+  });
+});
+$(window).resize(drawSquares);
+
+function drawSquares() {
+  var colours = ["#403f3f", "#403f3f", "#ffd94f", "#e3dfd4", "#97948e"];
+  var canvas = document.getElementById('full-canvas');
+  var ctx = canvas.getContext("2d");
+  var width = canvas.width;
+  var height = canvas.height;
+
+  for (var i = 0; i < height / 16; i++) {
+    for (var j = 0; j < width / 16; j++) {
+      ctx.fillStyle = colours[Math.floor(Math.random() * colours.length)];
+      ctx.fillRect(j * 16, i * 16, 12, 12);
+    }
+  }
+}
+
+</script>
