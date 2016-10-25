@@ -9,22 +9,21 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    
+
     <link rel="stylesheet" href="~/Content/Site.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="~/Content/bootstrap.css" type="text/css" media="screen" />
 
     <link rel="stylesheet" href="~/Content/font-awesome-4.6.3/css/font-awesome.min.css" type="text/css" media="screen" />
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="~/Content/css/main.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="~/Content/css/home.css" type="text/css" media="screen" />
-    
+
     <script src="@Url.Content("~/Scripts/jquery-1.10.2.js")"></script>
-    <script src="@Url.Content("https://maps.googleapis.com/maps/api/js?key=AIzaSyDY_-Sbpc7dEyezG2jx_skos9uTQwGRnx8")"></script>
     @if (IsSectionDefined("Scripts"))
     {
-    @RenderSection("Scripts", false)
-}
+        @RenderSection("Scripts", false)
+    }
 </head>
 <body>
 
@@ -49,34 +48,34 @@
                             <li>@Html.ActionLink("Sellers", "Search", "Sellers")</li>
                             @if (Request.IsAuthenticated)
                             {
-                            <li>@Html.ActionLink("Manage Comics", "Index", "Comics")</li>
-                            <li>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</li>
-                            <li>@Html.ActionLink("Manage Sellers", "Index", "Sellers")</li>
-                        }
-                        <li>@Html.ActionLink("Contact", "Index", "Map")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
+                                <li>@Html.ActionLink("Manage Comics", "Index", "Comics")</li>
+                                <li>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</li>
+                                <li>@Html.ActionLink("Manage Sellers", "Index", "Sellers")</li>
+                            }
+                            <li>@Html.ActionLink("Contact", "Index", "Map")</li>
+                        </ul>
+                        @Html.Partial("_LoginPartial")
+                    </div>
                 </div>
             </div>
+            <div class="container body-content">
+                @RenderBody()
+            </div>
+            <footer>
+                <h3>&copy; @DateTime.Now.Year - ComicBookStore</h3>
+                <nav>
+                    <a>@Html.ActionLink("Comics", "Search", "Guns")</a>
+                    <a>@Html.ActionLink("Sellers", "Search", "Sellers")</a>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a>@Html.ActionLink("Manage Comics", "Index", "Guns")</a>
+                        <a>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</a>
+                        <a>@Html.ActionLink("Manage Sellers", "Index", "Sellers")</a>
+                    }
+                    <a>@Html.ActionLink("Contact", "Index", "Map")</a>
+                </nav>
+            </footer>
         </div>
-        <div class="container body-content">
-            @RenderBody()
-        </div>
-        <footer>
-            <h3>&copy; @DateTime.Now.Year - ComicBookStore</h3>
-            <nav>
-                <a>@Html.ActionLink("Comics", "Search", "Comics")</a>
-                <a>@Html.ActionLink("Sellers", "Search", "Sellers")</a>
-                @if (Request.IsAuthenticated)
-                {
-                <a>@Html.ActionLink("Manage Comics", "Index", "Comics")</a>
-                <a>@Html.ActionLink("Manage Reviews", "Index", "Reviews")</a>
-                <a>@Html.ActionLink("Manage Sellers", "Index", "Sellers")</a>
-            }
-            <a>@Html.ActionLink("Contact", "Index", "Map")</a>
-        </nav>
-    </footer>
-</div>
 
 </body>
 </html>
