@@ -19,6 +19,7 @@ namespace ComicBookStore.Models
         public string Author { get; set; }
         public string Content { get; set; }
         public Comics Comics { get; set; }
+        [DataType(DataType.Date)]
         public DateTime PublicityDate { get; set; }
 
         public enum Rank
