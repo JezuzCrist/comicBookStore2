@@ -34,6 +34,10 @@ namespace ComicBookStore.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Find the related seller
+            comics.Seller = db.Sellers.Find(comics.SellerId);
+
             return View(comics);
         }
 

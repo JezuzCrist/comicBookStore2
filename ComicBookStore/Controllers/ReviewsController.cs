@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -34,6 +34,10 @@ namespace ComicBookStore.Controllers
             {
                 return HttpNotFound();
             }
+
+            // Find the related comics
+            review.Comics = db.Comics.Find(review.ComicsID);
+
             return View(review);
         }
 
