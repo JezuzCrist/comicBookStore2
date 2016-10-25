@@ -49,7 +49,9 @@ html, body {
 	margin-right: auto;
 	margin-left: auto;
 }
-
+.filter h3{
+	text-align: center;
+}
 .filtered-sellers {
 	text-align: left;
 }
@@ -60,9 +62,8 @@ html, body {
 .sellers-distribution,
 .sellers-filter, 
 .filter {
-	margin-left: -370px;
 	padding: 10px 10px;
-	width: 330px;
+	background-color: #47474a;
 }
 
 .sellers-distribution,
@@ -169,16 +170,12 @@ input[type=submit] {
 ------------------------------*/
 
 .comicses {
-	margin-top:-351px;
 }
 
 #comics-details {
-	background-color: #FAFAFA;
+	background-color: #47474a;
 	padding: 10px 20px;
 	margin-top: 15px;
-	-webkit-box-shadow: 0px 1px 5px -1px #888888;
-	-ms-box-shadow: 0px 1px 5px -1px #888888;
-	box-shadow: 0px 1px 5px -1px #888888;
 }
 
 #comics-details img {
@@ -246,7 +243,7 @@ input[type=submit] {
 }
 
 .header-color {
-	color: #055CA4;
+	color: #ffd94f;
 }
 
 .max-width {
