@@ -23,7 +23,7 @@ namespace ComicBookStore.Models
         public double Price { get; set; }
 
         [DisplayName("Genre")]
-        public string Genre { get; set; }
+        public GenreEnum Genre { get; set; }
         public bool IsPhotoExists { get; set; }
         public virtual List<Review> Reviews { get; set; }
         [DisplayName("Seller")]
@@ -31,6 +31,20 @@ namespace ComicBookStore.Models
 
         public Comics()
         {
+        }
+
+        public enum GenreEnum
+        {
+            [Display(Name = "Action")]
+            ACTION,
+            [Display(Name = "Horror")]
+            HORROR,
+            [Display(Name = "Drama")]
+            DRAMA,
+            [Display(Name = "Comedy")]
+            COMEDY,
+            [Display(Name = "History")]
+            HISTORY
         }
     }
 }

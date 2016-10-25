@@ -177,7 +177,7 @@ namespace ComicBookStore.Controllers
 
             if (!string.IsNullOrEmpty(gener))
             {
-                comicsQuery = comicsQuery.Where(x => x.Genre.Contains(gener));
+                comicsQuery = comicsQuery.Where(x => x.Genre.ToString().Contains(gener));
             }
 
             ViewBag.Comics = comicsQuery.ToList();
