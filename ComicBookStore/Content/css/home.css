@@ -86,3 +86,7 @@ video{
 	-moz-column-rule: 1px solid whitesmoke; /* Firefox */
 	column-rule: 1px solid whitesmoke;
 }
+
+#firstGraph,#secondGraph {
+	background-color: #e9e9e9;
+}
